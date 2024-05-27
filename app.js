@@ -91,6 +91,7 @@ class App {
         this.debugBtnElement.addEventListener('click', (event) => this.onDebugBtnClick(event), false)
 
         window.addEventListener('resize', this.onWindowResized, false)
+        screen.orientation.addEventListener('change', this.onWindowResized, false)
         this.onWindowResized(null)
 
         //add class active

@@ -114,6 +114,7 @@ canvas {
     background-color: rgba(0, 0, 0, 0.4);
     z-index: 1000;
     padding: 10px;
+    overflow-y: scroll;
 }
 
 .debug ul{
