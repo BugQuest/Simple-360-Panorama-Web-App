@@ -33,8 +33,8 @@ if($isMobile) {
     </svg>
 </div>
 <div id="app">
-    <div class="btn-back" onclick="window.location.href='index.php'">Retour</div>
-    <div class="debug-button" id="__debug_btn"></div>
+    <button type="button" class="btn-back" onclick="window.location.href='index.php'">Retour</button>
+    <button type="button" class="debug-button" id="__debug_btn"></button>
     <div class="debug" id="__debug">
         <div id="__debug_input"></div>
         <div id="__debug_exif"></div>
