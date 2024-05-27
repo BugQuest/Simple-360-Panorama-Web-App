@@ -238,7 +238,7 @@ class App {
         if (event.touches.length == 1) {
             event.preventDefault()
             this.lon = (this.onPointerDownPointerX - event.touches[0].pageX) * 0.2 + this.onPointerDownLon
-            this.lat = (event.touches[0].pageY - this.onPointerDownPointerY) * -0.2 + this.onPointerDownLat
+            this.lat = (event.touches[0].pageY - this.onPointerDownPointerY) * 0.2 + this.onPointerDownLat
         } else if (event.touches.length == 2) {
             this.isUserInteracting = true
             let dx = event.touches[0].pageX - event.touches[1].pageX
@@ -250,6 +250,7 @@ class App {
                 this.fov = (this.fov < 20) ? 20 : 90
 
             this.camera.fov = this.fov
+            this.camera.updateProjectionMatrix()
         }
     }
 
