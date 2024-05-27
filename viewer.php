@@ -32,8 +32,8 @@ if($isMobile) {
         <circle class="fg"></circle>
     </svg>
 </div>
-<button class="btn-back" onclick="window.location.href='index.php'">Retour</button>
-<button class="debug-button" id="__debug_btn"></button>
+<div class="btn-back" onclick="window.location.href='index.php'">Retour</div>
+<div class="debug-button" id="__debug_btn"></div>
 <div id="app">
     <div class="debug" id="__debug">
         <div id="__debug_input"></div>
