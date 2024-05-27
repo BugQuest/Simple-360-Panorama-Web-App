@@ -18,6 +18,7 @@ class App {
         this.onMouseDownLat = 0
         this.phi = 0
         this.theta = 0
+        this.pinch = 0
 
         this.textureLoader = new THREE.TextureLoader()
         this.texture = null
@@ -117,6 +118,7 @@ class App {
         if (this.is_debug)
             this.debugInputElement.innerHTML = `
             <ul>
+                <li>pinc: ${this.pinch}</li>
                 <li>x: ${this.camera.target.x}</li>
                 <li>y: ${this.camera.target.y}</li>
                 <li>z: ${this.camera.target.z}</li>
@@ -245,6 +247,7 @@ class App {
             let dy = event.touches[0].pageY - event.touches[1].pageY
             let distance = Math.sqrt(dx * dx + dy * dy)
             let scale = distance / 100
+            this.pinch = scale
             this.fov = this.fov * scale
             if (this.fov < 20 || this.fov > 90)
                 this.fov = (this.fov < 20) ? 20 : 90
