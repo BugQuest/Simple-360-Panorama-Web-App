@@ -136,3 +136,11 @@ canvas {
     margin: 5px 0;
     text-decoration: none;
 }
+
+/** if sreen height is less than 400px */
+@media screen and (max-height: 400px) {
+    .debug {
+        top: 0;
+        right: 100px;
+    }
+}
