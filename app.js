@@ -248,7 +248,12 @@ class App {
             let distance = Math.sqrt(dx * dx + dy * dy)
             let scale = distance / 100
             this.pinch = scale
-            this.fov = this.fov * scale
+            if(this.pinch < 1 || this.pinch > 5)
+                this.pinch = (this.pinch < 1) ? 1 : 5
+
+            //fov from 20 to 90, proportionnal to pinch 1 to 5
+            this.fov = 20 + (this.pinch - 1) * 17
+
             if (this.fov < 20 || this.fov > 90)
                 this.fov = (this.fov < 20) ? 20 : 90
 
