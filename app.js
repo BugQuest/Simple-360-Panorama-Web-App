@@ -237,8 +237,8 @@ class App {
     onDocumentTouchMove(event) {
         if (event.touches.length == 1) {
             event.preventDefault()
-            this.lon = (this.onPointerDownPointerX - event.touches[0].pageX) * 0.6 + this.onPointerDownLon
-            this.lat = (event.touches[0].pageY - this.onPointerDownPointerY) * -0.6+ this.onPointerDownLat
+            this.lon = (this.onPointerDownPointerX - event.touches[0].pageX) * 0.2 + this.onPointerDownLon
+            this.lat = (event.touches[0].pageY - this.onPointerDownPointerY) * -0.2 + this.onPointerDownLat
         } else if (event.touches.length == 2) {
             this.isUserInteracting = true
             let dx = event.touches[0].pageX - event.touches[1].pageX
