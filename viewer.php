@@ -34,11 +34,11 @@ if($isMobile) {
 </div>
 <div class="btn-back" onclick="window.location.href='index.php'">Retour</div>
 <div class="debug-button" id="__debug_btn"></div>
+<div class="debug" id="__debug">
+    <div id="__debug_input"></div>
+    <div id="__debug_exif"></div>
+</div>
 <div id="app">
-    <div class="debug" id="__debug">
-        <div id="__debug_input"></div>
-        <div id="__debug_exif"></div>
-    </div>
 </div>
 <!-- <script src="three.min.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
