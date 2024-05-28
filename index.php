@@ -13,6 +13,7 @@
     <hr
     / width="50%">
     <p>Click sur un panorama pour le visualiser</p>
+    <p style="color: #fd6100">Version HD et Max seulement pour pc</p>
 </div>
 <?php include_once 'includes/get360Views.php'; ?>
 
