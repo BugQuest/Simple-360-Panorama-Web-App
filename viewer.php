@@ -2,7 +2,7 @@
 $panorama = filter_input(INPUT_GET, 'panorama', FILTER_SANITIZE_STRING);
 $path = 'images/' . $panorama . '.jpg';
 if (!file_exists($path))
-    header('Location: index.php');
+    header('Location: index.html');
 
 $exif = exif_read_data($path, 0, true);
 
@@ -13,7 +13,7 @@ if($isMobile) {
 
     //if width is greater than 4096 or height is greater than 2048, mobile can't handle it, redirect to index
     if($width > 4096 || $height > 2048)
-        header('Location: index.php');
+        header('Location: index.html');
 }
 ?>
 <!DOCTYPE html>
