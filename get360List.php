@@ -1,4 +1,20 @@
 <?php
+// Fonction pour convertir une fraction sous forme "numérateur/dénominateur" en décimal
+function fractionToDecimal($fraction)
+{
+    list($numerator, $denominator) = explode('/', $fraction);
+    return $numerator / $denominator;
+}
+
+// Conversion de la latitude et de la longitude en degrés décimaux
+function convertDMSToDD($dmsArray)
+{
+    $degrees = fractionToDecimal($dmsArray[0]);
+    $minutes = fractionToDecimal($dmsArray[1]);
+    $seconds = fractionToDecimal($dmsArray[2]);
+    return $degrees + ($minutes / 60) + ($seconds / 3600);
+}
+
 $files = glob('images/*.jpg');
 
 $panoramas = [];
@@ -28,6 +44,15 @@ foreach ($files as $path) {
 
     $pc_only = $width > 4096 || $height > 2048;
 
+    $latitude = convertDMSToDD($exif['GPS']['GPSLatitude']);
+    $longitude = convertDMSToDD($exif['GPS']['GPSLongitude']);
+    $altitude = fractionToDecimal($exif['GPS']['GPSAltitude']);
+
+    $latitude_ref = $exif['GPS']['GPSLatitudeRef'];
+
+    if ($latitude_ref == 'W')
+        $longitude = -$longitude;
+
     $panoramas[] = [
         'name' => $name,
         'path' => $path,
@@ -36,6 +61,9 @@ foreach ($files as $path) {
         'width' => $width,
         'height' => $height,
         'pc_only' => $pc_only,
+        'latitude' => $latitude,
+        'longitude' => $longitude,
+        'altitude' => $altitude,
         'hd' => false,
         'max' => false,
         'selected' => 'mobile'
@@ -62,3 +90,7 @@ foreach ($panoramas as $key => $panorama) {
 usort($panoramas, function ($a, $b) {
     return strtotime($b['date']) - strtotime($a['date']);
 });
+
+//set header to json
+header('Content-Type: application/json');
+echo json_encode($panoramas);

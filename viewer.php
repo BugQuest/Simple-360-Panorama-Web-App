@@ -32,7 +32,7 @@ if($isMobile) {
         <circle class="fg"></circle>
     </svg>
 </div>
-<div class="btn-back" onclick="window.location.href='index.php'">Retour</div>
+<div class="btn-back" onclick="window.location.href='/'">Retour</div>
 <div class="debug-button" id="__debug_btn"></div>
 <div class="debug" id="__debug">
     <div id="__debug_input"></div>
