@@ -1,7 +1,7 @@
 {
   "name": "BugQuest 360",
   "short_name": "BQ360",
-  "start_url": "/index.php",
+  "start_url": "/index.html",
   "background_color": "#000000",
   "description": "Mes panoramas 360° interactifs",
   "display": "fullscreen",
