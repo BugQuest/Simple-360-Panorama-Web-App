@@ -85,12 +85,12 @@ class App {
         this.container.addEventListener('mouseup', (event) => this.onDocumentMouseUp(event), false)
         this.container.addEventListener('mouseleave', (event) => this.onDocumentMouseUp(event), false)
         this.container.addEventListener('wheel', (event) => this.onDocumentMouseWheel(event), false)
-        // this.container.addEventListener('touchstart', (event) => this.onDocumentTouchStart(event), false)
-        // this.container.addEventListener('touchmove', (event) => this.onDocumentTouchMove(event), false)
-        // this.container.addEventListener('touchend', (event) => this.onDocumentTouchEnd(event), false)
+        this.container.addEventListener('touchstart', (event) => this.onDocumentTouchStart(event), false)
+        this.container.addEventListener('touchmove', (event) => this.onDocumentTouchMove(event), false)
+        this.container.addEventListener('touchend', (event) => this.onDocumentTouchEnd(event), false)
 
-        this.container.addEventListener('gesturestart', (event) => this.onGestureStart(event), false)
-        this.container.addEventListener('gestureend', (event) => this.onGestureEnd(event), false)
+        // this.container.addEventListener('gesturestart', (event) => this.onGestureStart(event), false)
+        // this.container.addEventListener('gestureend', (event) => this.onGestureEnd(event), false)
 
         this.debugBtnElement.addEventListener('click', (event) => this.onDebugBtnClick(event), false)
 
