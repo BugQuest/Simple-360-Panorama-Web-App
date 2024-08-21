@@ -85,9 +85,12 @@ class App {
         this.container.addEventListener('mouseup', (event) => this.onDocumentMouseUp(event), false)
         this.container.addEventListener('mouseleave', (event) => this.onDocumentMouseUp(event), false)
         this.container.addEventListener('wheel', (event) => this.onDocumentMouseWheel(event), false)
-        this.container.addEventListener('touchstart', (event) => this.onDocumentTouchStart(event), false)
-        this.container.addEventListener('touchmove', (event) => this.onDocumentTouchMove(event), false)
-        this.container.addEventListener('touchend', (event) => this.onDocumentTouchEnd(event), false)
+        // this.container.addEventListener('touchstart', (event) => this.onDocumentTouchStart(event), false)
+        // this.container.addEventListener('touchmove', (event) => this.onDocumentTouchMove(event), false)
+        // this.container.addEventListener('touchend', (event) => this.onDocumentTouchEnd(event), false)
+
+        this.container.addEventListener('gesturestart', (event) => this.onGestureStart(event), false)
+        this.container.addEventListener('gestureend', (event) => this.onGestureEnd(event), false)
 
         this.debugBtnElement.addEventListener('click', (event) => this.onDebugBtnClick(event), false)
 
@@ -269,6 +272,21 @@ class App {
     onDebugBtnClick(event) {
         this.is_debug = !this.is_debug
         this.debugElement.style.display = (this.is_debug) ? 'block' : 'none'
+    }
+
+    onGestureStart(event) {
+        this.isUserInteracting = true
+    }
+    onGestureEnd(event) {
+        this.isUserInteracting = false
+        let scale = event.originalEvent.scale
+        this.pinch = scale
+        this.fov += scale;
+        if (this.fov < 20 || this.fov > 90)
+            this.fov = (this.fov < 20) ? 20 : 90
+
+        this.camera.fov = this.fov
+        this.camera.updateProjectionMatrix()
     }
 }
 
