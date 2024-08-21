@@ -3,7 +3,7 @@
     <div id="mobile-menu-btn" @click="mobile_menu = !mobile_menu">
       Menu
     </div>
-    <div id="panoramas" :class="{active:mobile_menu}">
+    <div id="panoramas" class="flex flex-col" :class="{active:mobile_menu}">
       <div class="item">
         <div id="mobile-menu-close" @click="mobile_menu = !mobile_menu">
           Close
