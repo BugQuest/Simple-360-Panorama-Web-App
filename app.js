@@ -24,6 +24,12 @@ class App {
         this.texture = null
         this.progressElement = document.getElementById('progress')
         this.progressBarElement = document.getElementById('circular-progress')
+        this.zoom_input = document.getElementById('__zoom')
+
+        //set min and max zoom
+        this.zoom_input.min = 20
+        this.zoom_input.max = 90
+        this.zoom_input.value = this.fov
 
         this.container = document.getElementById('app')
         this.mesh = null
@@ -88,6 +94,7 @@ class App {
         this.container.addEventListener('touchstart', (event) => this.onDocumentTouchStart(event), false)
         this.container.addEventListener('touchmove', (event) => this.onDocumentTouchMove(event), false)
         this.container.addEventListener('touchend', (event) => this.onDocumentTouchEnd(event), false)
+        this.zoom_input.addEventListener('input', (event) => this.onChangeZoomInput(event), false)
 
         // this.container.addEventListener('gesturestart', (event) => this.onGestureStart(event), false)
         // this.container.addEventListener('gestureend', (event) => this.onGestureEnd(event), false)
@@ -95,6 +102,7 @@ class App {
         this.debugBtnElement.addEventListener('click', (event) => this.onDebugBtnClick(event), false)
 
         window.addEventListener('resize', (event) => this.onWindowResized(event), false)
+        window.addEventListener('orientationchange', (event) => this.onWindowResized(event), false)
         screen.orientation.addEventListener('change', (event) => this.onWindowResized(event), false)
         this.onWindowResized(null)
 
@@ -102,6 +110,7 @@ class App {
         this.debugBtnElement.classList.add('active')
 
         this.animate()
+        this.camera.updateProjectionMatrix()
     }
 
     animate() {
@@ -220,12 +229,22 @@ class App {
             this.fov = (this.fov < 20) ? 20 : 90
 
         this.camera.fov = this.fov
+        this.zoom_input.value = this.fov
+        this.camera.updateProjectionMatrix()
+    }
+
+    onChangeZoomInput(event){
+        this.fov = this.zoom_input.value
+        this.camera.fov = this.fov
         this.camera.updateProjectionMatrix()
     }
 
     onWindowResized(event) {
-        this.renderer.setSize(window.innerWidth, window.innerHeight)
-        this.camera.projectionMatrix.makePerspective(this.fov, 2, 1, 1000)
+        setTimeout(() => {
+            this.renderer.setSize(window.innerWidth, window.innerHeight)
+            this.camera.projectionMatrix.makePerspective(this.fov, window.innerWidth / window.innerHeight, 1, 1000)
+            this.camera.updateProjectionMatrix()
+        }, 100);
     }
 
     onDocumentTouchStart(event) {

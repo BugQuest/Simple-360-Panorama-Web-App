@@ -38,6 +38,7 @@ if($isMobile) {
     <div id="__debug_input"></div>
     <div id="__debug_exif"></div>
 </div>
+<input id="__zoom" type="range" orient="vertical" />
 <div id="app">
 </div>
 <!-- <script src="three.min.js"></script> -->

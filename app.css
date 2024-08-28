@@ -137,6 +137,19 @@ canvas {
     text-decoration: none;
 }
 
+input[type=range][orient=vertical] {
+    writing-mode: sideways-lr;
+    direction: rtl;
+    appearance: slider-vertical;
+    width: 16px;
+    vertical-align: bottom;
+    z-index: 999;
+    position: absolute;
+    left:1rem;
+    top: 1rem;
+    bottom: 1rem;
+}
+
 /** if sreen height is less than 400px */
 @media screen and (max-height: 400px) {
     .debug {
