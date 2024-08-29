@@ -241,6 +241,7 @@ class App {
 
     onWindowResized(event) {
         setTimeout(() => {
+            this.renderer.setPixelRatio(window.devicePixelRatio)
             this.renderer.setSize(window.innerWidth, window.innerHeight)
             this.camera.projectionMatrix.makePerspective(this.fov, window.innerWidth / window.innerHeight, 1, 1000)
             this.camera.updateProjectionMatrix()
@@ -280,6 +281,7 @@ class App {
                 this.fov = (this.fov < 20) ? 20 : 90
 
             this.camera.fov = this.fov
+            this.zoom_input.value = this.fov
             this.camera.updateProjectionMatrix()
         }
     }
